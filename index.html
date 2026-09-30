@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="zh-CN" data-page-node-id="XycYdYeKBJotXf5k980SMX">
+<head data-page-node-id="ljPqpCvPcJpq0vyX1VpRLl">
+<meta charset="UTF-8" data-page-node-id="1vEAfMpeBddQaiGqVk98oA">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="GKXbypVaPyR83n6aUe4zTA">
 <title>TVBox 配置解析器</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -119,140 +119,144 @@ input[type="checkbox"]{width:15px;height:15px;accent-color:var(--primary);cursor
 .hint-bar{font-size:.78rem;color:#15803d;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:8px 10px;margin-bottom:10px;line-height:1.5}
 </style>
 </head>
-<body>
-<div class="app">
-<header>
-<h1>📡 TVBox 配置解析器</h1>
-<div class="sub">输入链接 / 粘贴内容 / 上传文件 → 解析影视节点 → 自由组合 → 导出 JSON</div>
+<body data-page-node-id="Fn1Y3DpUjljXkCbKHlEHCm">
+<div class="app" data-page-node-id="nVbivOD1L0gzp6YkuJj10P">
+<header data-page-node-id="1ENuFUFi5fm5nyPiBfLFAF">
+<h1 data-page-node-id="dK8MghNoMAUwEbXLsD1N1M">📡 TVBox 配置解析器</h1>
+<div class="sub" data-page-node-id="6EHozt5EfYmg5qSHVki3aS">输入链接 / 粘贴内容 / 上传文件 → 解析影视节点 → 自由组合 → 导出 JSON</div>
 </header>
 
 <!-- Input Card -->
-<div class="card">
-<div class="card-title"><span class="ic">📥</span> 输入配置源</div>
-<div class="tabs" id="inputTabs">
-<button class="tab-btn active" data-tab="tab-url">URL 链接</button>
-<button class="tab-btn" data-tab="tab-text">粘贴json文本</button>
-<button class="tab-btn" data-tab="tab-file">上传文件</button>
+<div class="card" data-page-node-id="rYJpDh5PsRLpyF6cUrbX14">
+<div class="card-title" data-page-node-id="g2a3Gi2fsDnUtbtQ9H6Knf"><span class="ic" data-page-node-id="Dwmm2AB6G6ohqAv3CBXdnd">📥</span> 输入配置源</div>
+<div class="tabs" id="inputTabs" data-page-node-id="THyGv94UNGJgGinuPcdtHx">
+<button class="tab-btn active" data-tab="tab-url" data-page-node-id="NTCamQJd67P7NHyLwPUnBO">URL 链接</button>
+<button class="tab-btn" data-tab="tab-text" data-page-node-id="VL7FLQ1HbrKXB2wNfNjLgZ">粘贴json文本</button>
+<button class="tab-btn" data-tab="tab-file" data-page-node-id="XXGYcXUL3W0VMKnWf1exwW">上传文件</button>
 </div>
-<div class="tab-panel active" id="tab-url">
-<div class="hint-bar">⚠️ 如果解析失败，请改用右侧「粘贴json文本」</div>
+<div class="tab-panel active" id="tab-url" data-page-node-id="fDDLleFDtSmJVTp2vP4reb">
+<div class="hint-bar" data-page-node-id="jVmARvFeZH7BowO01rr7rG">⚠️ 如果解析失败，请改用右侧「粘贴json文本」</div>
 <textarea id="inputUrl" placeholder="粘贴任意包含链接的文本（每行一个链接也可），系统自动提取其中的 URL 并解析：&#10;https://example.com/config.json&#10;也可在一段说明文字里附带 https://example.com/sites.json 一起解析"></textarea>
 </div>
-<div class="tab-panel" id="tab-text">
+<div class="tab-panel" id="tab-text" data-page-node-id="9LalhVivHuU24Syjx6ZwGl">
 <textarea id="inputText" placeholder="在此粘贴完整的 TVBox 配置 JSON 文本，直接解析（无需链接）：&#10;{&#10;  &#34;sites&#34;: [...],&#10;  &#34;spider&#34;: &#34;https://.../spider.jar&#34;&#10;}"></textarea>
 </div>
-<div class="tab-panel" id="tab-file">
-<input type="file" id="inputFile" accept=".json,.txt" multiple>
-<p style="font-size:.78rem;color:var(--text2);margin-top:8px">支持 .json / .txt，可多选批量上传，点击「解析」一次性全部处理</p>
-<div id="fileList" class="file-list"></div>
+<div class="tab-panel" id="tab-file" data-page-node-id="e7SFpkGecSjBsKD06VKP6Y">
+<input type="file" id="inputFile" accept=".json,.txt" multiple data-page-node-id="9ejUtZcZvRgOB3FAbJbRGU">
+<p style="font-size:.78rem;color:var(--text2);margin-top:8px" data-page-node-id="QzHu0U61scoq7ZfIVtgHFl">支持 .json / .txt，可多选批量上传，点击「解析」一次性全部处理</p>
+<div id="fileList" class="file-list" data-page-node-id="lvMYd40LjMb78XTfbI5RfG"></div>
 </div>
 
-<details class="adv">
-<summary>⚙️ 高级设置（可选）</summary>
-<div class="adv-body">
-<label>自定义代理地址（留空则自动尝试公开代理）</label>
-<input type="text" id="proxyInput" class="proxy-input" placeholder="https://你的代理/?url=">
-<p class="hint">浏览器有跨域(CORS)限制，部分 TVBox 能解析的链接网页直连会失败。本工具使用「3 路并发竞跑」机制：直连 + thingproxy + codetabs 同时发起，谁先成功返回谁，单通道超时 4 秒，最快 ~200ms。若仍有 URL 获取失败（CORS 限制），请直接改用「粘贴json文本」tab——在 TVBox 里打开链接，复制 JSON 内容粘贴即可绕过所有跨域限制。</p>
+<details class="adv" data-page-node-id="FXPAZS2TBCVY2BvnzyhAg3">
+<summary data-page-node-id="JpW7PKRHsQyuAVkA9JjiRu">⚙️ 高级设置（可选）</summary>
+<div class="adv-body" data-page-node-id="vZEjv74YNofweg1H88RUdc">
+<label data-page-node-id="5RUBcGK4V6GA2tmQNOSFhr">自定义代理地址（留空则自动尝试公开代理）</label>
+<input type="text" id="proxyInput" class="proxy-input" placeholder="https://你的代理/?url=" data-page-node-id="ipFKNLbHDc7TbZD9zeQ4ns">
+<p class="hint" data-page-node-id="hxzfTUdzHEeTB59fCM8Oo3">浏览器有跨域(CORS)限制，部分 TVBox 能解析的链接网页直连会失败。本工具使用「3 路并发竞跑」机制：直连 + thingproxy + codetabs 同时发起，谁先成功返回谁，单通道超时 4 秒，最快 ~200ms。若仍有 URL 获取失败（CORS 限制），请直接改用「粘贴json文本」tab——在 TVBox 里打开链接，复制 JSON 内容粘贴即可绕过所有跨域限制。</p>
 </div>
 </details>
 
-<div class="btn-row">
-<button class="btn btn-primary" id="btnParse">🔍 解析</button>
-<button class="btn btn-multirepo" id="btnMultiRepo">🏬 组合多仓</button>
-<button class="btn btn-outline" id="btnClear">🗑️ 清空</button>
+<div class="btn-row" data-page-node-id="Gncoc5fLWn7wSTLlxBttmW">
+<button class="btn btn-primary" id="btnParse" data-page-node-id="CB365BbDSPA4UouKPsAYqW">🔍 解析</button>
+<button class="btn btn-multirepo" id="btnMultiRepo" data-page-node-id="QzA5qVPU7TFyWs6Fp30VQa">🏬 组合多仓</button>
+<button class="btn btn-outline" id="btnClear" data-page-node-id="AcRFSnyFPnMhCw7cG5RoDW">🗑️ 清空</button>
 </div>
 
-<div class="progress-wrap" id="progressWrap">
-<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-<div class="progress-text"><span id="progressLabel">正在解析...</span><span id="progressCount"></span></div>
+<div class="progress-wrap" id="progressWrap" data-page-node-id="0eStJAcsBmjCNQHSMlTUNo">
+<div class="progress-bar" data-page-node-id="hLVC2B7UqnDfOw76ZRyGsh"><div class="progress-fill" id="progressFill" data-page-node-id="XPYFNAC1tC6rg5BlnfhrCX"></div></div>
+<div class="progress-text" data-page-node-id="RVmnxxBCre90BwhSWK5SJG"><span id="progressLabel" data-page-node-id="rJOu1W2vRFBhaaVCEzmL7b">正在解析...</span><span id="progressCount" data-page-node-id="uua58xCIOx4IKyD1Wp74BA"></span></div>
 </div>
 </div>
 
 <!-- Parse Log -->
-<div class="card" id="logCard" style="display:none">
-<div class="card-title"><span class="ic">📝</span> 解析日志</div>
-<div class="log-list" id="logList"></div>
+<div class="card" id="logCard" style="display:none" data-page-node-id="91ZGisLUTQ8ofGga0cQcou">
+<div class="card-title" data-page-node-id="HZnPvvU8ouRV5nK3F6pAGU"><span class="ic" data-page-node-id="MveHhcCmUlzFeav1vAddQS">📝</span> 解析日志</div>
+<div class="log-list" id="logList" data-page-node-id="ZAb4AcLHboQZdvC1EBxECm"></div>
 </div>
 
 <!-- Stats -->
-<div id="statsBar" style="display:none" class="stats-bar"></div>
+<div id="statsBar" style="display:none" class="stats-bar" data-page-node-id="NxyCvhc5ClOuj9HN98HCTb"></div>
 
 <!-- Results Card -->
-<div class="card" id="resultsCard" style="display:none">
-<div class="card-title"><span class="ic">📺</span> 解析结果</div>
-<div class="tabs" id="resultTabs">
-<button class="tab-btn active" data-tab="res-sites">影视源</button>
-<button class="tab-btn" data-tab="res-lives">直播源</button>
-<button class="tab-btn" data-tab="res-parses">解析器</button>
-<button class="tab-btn" data-tab="res-wallpapers">壁纸</button>
-<button class="tab-btn" data-tab="res-rules">规则</button>
+<div class="card" id="resultsCard" style="display:none" data-page-node-id="7FsQ47xhAHubfa6ObcdT9y">
+<div class="card-title" data-page-node-id="YXcgyrENaGSsZZ6oKD4Hn1"><span class="ic" data-page-node-id="GD4fk0XqWBB1oKdwJEA8OG">📺</span> 解析结果</div>
+<div class="tabs" id="resultTabs" data-page-node-id="AoSewpQWZA9XmWow887hAo">
+<button class="tab-btn active" data-tab="res-sites" data-page-node-id="inUfJ9iJR4zlcwEZue1qnB">影视源</button>
+<button class="tab-btn" data-tab="res-lives" data-page-node-id="CDgZr494TQZy8OGMnyl022">直播源</button>
+<button class="tab-btn" data-tab="res-parses" data-page-node-id="BUYwnUJQeUvWXvUzazver9">解析器</button>
+<button class="tab-btn" data-tab="res-wallpapers" data-page-node-id="EbOcwVH6gwFVpKoyPO7lAA">壁纸</button>
+<button class="tab-btn" data-tab="res-rules" data-page-node-id="jBGl3eIbZVBj9hmM76XWzC">规则</button>
 </div>
-<div id="resultsBody"></div>
+<div id="resultsBody" data-page-node-id="INR9eA37Mltxubb2bBcx5l"></div>
 </div>
 
 <!-- Export Card -->
-<div class="card" id="exportCard" style="display:none">
-<div class="card-title"><span class="ic">📤</span> 组合 & 导出</div>
-<div class="result-toolbar">
-<button class="btn btn-sm btn-outline" id="btnSelectAll">✅ 全选</button>
-<button class="btn btn-sm btn-outline" id="btnInverse">🔄 反选</button>
-<button class="btn btn-sm btn-danger" id="btnClearSel">❌ 清除选中</button>
-<span class="info" id="exportInfo">已选中: 0 个节点</span>
+<div class="card" id="exportCard" style="display:none" data-page-node-id="YqE1ur0vb0yDDcT0HpXFcF">
+<div class="card-title" data-page-node-id="uSxXJjWYAmJlE4tpoAiThp"><span class="ic" data-page-node-id="8jIfIswnJr93dc1VPj3w84">📤</span> 组合 & 导出</div>
+<div class="result-toolbar" data-page-node-id="7A9uL2t7EuCA9yK8uTUAEq">
+<button class="btn btn-sm btn-outline" id="btnSelectAll" data-page-node-id="OkdWtPeFm6vqi9wKrtBZnE">✅ 全选</button>
+<button class="btn btn-sm btn-outline" id="btnInverse" data-page-node-id="KUwDzASSvEkjeRq08J3AuH">🔄 反选</button>
+<button class="btn btn-sm btn-danger" id="btnClearSel" data-page-node-id="JJYbmS7BwYTlqiff09k2u9">❌ 清除选中</button>
+<span class="info" id="exportInfo" data-page-node-id="Df3oWu8MW5tzvvGMAeGzkx">已选中: 0 个节点</span>
 </div>
-<div class="result-toolbar" style="margin-bottom:10px">
-<label style="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer">
-<input type="checkbox" id="chkGlobal" checked> 包含全局配置（spider / logo / wallpaper 等，搜索播放必需）
+<div class="result-toolbar" style="margin-bottom:10px" data-page-node-id="ilzJ2jwBWH8BpXGGlchCGA">
+<label style="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer" data-page-node-id="Xc93qsJKK86omjuENNlbFv">
+<input type="checkbox" id="chkGlobal" checked data-page-node-id="aANpXlARvSNQBPkW0ub2IJ"> 包含全局配置（spider / logo / wallpaper 等，搜索播放必需）
 </label>
-<label style="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer;margin-top:6px">
-<input type="checkbox" id="chkCompat" checked> TVBox 兼容模式（修正 parses.ext 等致命类型并补全缺失 type，避免「配置解析失败」，推荐保持勾选）
+<label style="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer;margin-top:6px" data-page-node-id="dEVaFl5LcpOzljLY55jwh4">
+<input type="checkbox" id="chkCompat" checked data-page-node-id="0MAlK99AjtCkUDkhqqLlA2"> TVBox 兼容模式（修正 parses.ext 等致命类型并补全缺失 type，避免「配置解析失败」，推荐保持勾选）
 </label>
-<label style="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer;margin-top:6px">
-<input type="checkbox" id="chkSpiderOverride"> 强制使用上方 spider（勾选后覆盖所有源；不勾选 = 单源自动跟随源自带 spider，多源合并自动选「覆盖面最广」的 spider，无需手动）
+<label style="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer;margin-top:6px" data-page-node-id="yf4bidGfEI1ccDA9yKa6iR">
+<input type="checkbox" id="chkSpiderOverride" data-page-node-id="g5S2FXBXNq0SD1lV7Q7QMK"> 强制使用上方 spider（勾选后覆盖所有源；不勾选 = 单源自动跟随源自带 spider，多源合并自动选「覆盖面最广」的 spider，无需手动）
 </label>
-<div style="margin:4px 0 2px 22px">
-<input type="text" id="spiderOverrideUrl" style="width:100%;box-sizing:border-box;font-size:.76rem;padding:4px 6px;border:1px solid #cbd5e0;border-radius:4px" value="https://tc-new.z.wiki/autoupload/k2fxc/20260821/n5ke/fish08211330.jar;md5;ba25eb6bad40a9352017438a47865a10" placeholder="默认/强制 spider 绝对 URL（.jar）。TVBox 的 spider jar 会随时间失效，解析器会在打开时自动探测并更新为当前可用地址">
+<div style="margin:4px 0 2px 22px" data-page-node-id="bekUAmIvRiEmQXPNbKTTfX">
+<input type="text" id="spiderOverrideUrl" style="width:100%;box-sizing:border-box;font-size:.76rem;padding:4px 6px;border:1px solid #cbd5e0;border-radius:4px" value="https://tc-new.z.wiki/autoupload/k2fxc/20260821/n5ke/fish08211330.jar;md5;ba25eb6bad40a9352017438a47865a10" placeholder="默认/强制 spider 绝对 URL（.jar）。TVBox 的 spider jar 会随时间失效，解析器会在打开时自动探测并更新为当前可用地址" data-page-node-id="YAd5V9pFBbiELGJ87Qea8z">
 </div>
-<div id="spiderProbeStatus" style="margin:2px 0 4px 22px;font-size:.72rem;color:#15803d;min-height:1.1em">正在自动探测可用 spider...</div>
-<div style="margin:2px 0 4px 22px;font-size:.7rem;color:#b45309;background:#fffbeb;border:1px solid #fde68a;border-radius:4px;padding:4px 6px">
+<div id="spiderProbeStatus" style="margin:2px 0 4px 22px;font-size:.72rem;color:#15803d;min-height:1.1em" data-page-node-id="UOnYyf6O6d7e76Q8LyAC6X">正在自动探测可用 spider...</div>
+<div style="margin:2px 0 4px 22px;font-size:.7rem;color:#b45309;background:#fffbeb;border:1px solid #fde68a;border-radius:4px;padding:4px 6px" data-page-node-id="Y9C7ouLtN8qwsZsI45bV16">
 ⚠️ spider jar 地址不是永久稳定的：作者的 jar 会更新/删除/换域。多源合并时解析器会自动选「覆盖面最广」的 spider（覆盖依赖它的站点最多的那个源），尽量让最多站点可用；若勾选上方「强制使用」则可手动指定。如果默认地址某天也报 jar load err，请打开 TVBox 里一个能正常加载的配置源，把它里面的 spider 地址复制到上方框中替换即可。
 </div>
-<label style="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer;margin-top:4px">
-<input type="checkbox" id="chkAudit" checked> 导出前自动兼容审核（检查必填字段 / 残余类型冲突，给出通关提示）
+<label style="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer;margin-top:4px" data-page-node-id="GK0O2fyWwtIOULiE36m6YO">
+<input type="checkbox" id="chkAudit" checked data-page-node-id="0qDNpvbmFAmpWKkCWNTLXh"> 导出前自动兼容审核（检查必填字段 / 残余类型冲突，给出通关提示）
 </label>
-<label style="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer;margin-top:4px">
-<input type="checkbox" id="chkStrict"> 严格模式：剔除未通过审核的节点（缺少 key/api、name/url 等，确保文件干净通关）
+<label style="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer;margin-top:4px" data-page-node-id="UybsH8M74X3gYm5HspagHP">
+<input type="checkbox" id="chkStrict" data-page-node-id="Sx7APbDLthQ1iccoWC6WnZ"> 严格模式：剔除未通过审核的节点（缺少 key/api、name/url 等，确保文件干净通关）
 </label>
-<button class="btn btn-sm btn-outline" id="btnToggleGlobal" style="margin-left:auto">查看全局字段</button>
+<button class="btn btn-sm btn-outline" id="btnToggleGlobal" style="margin-left:auto" data-page-node-id="digYhXIeldYQkS3gVeMVWA">查看全局字段</button>
 </div>
-<div id="globalPreviewWrap" style="display:none;margin-bottom:12px">
-<div class="export-preview" id="globalPreview" style="background:#2d3748"></div>
+<div id="globalPreviewWrap" style="display:none;margin-bottom:12px" data-page-node-id="71fiVoFsa5wqGjlpJMT6OD">
+<div class="export-preview" id="globalPreview" style="background:#2d3748" data-page-node-id="4sH6GCBkvuJgZnqQrL8w3y"></div>
 </div>
-<div id="exportPreviewWrap" style="display:none">
-<p style="font-size:.82rem;color:var(--text2);margin-bottom:6px">导出预览：</p>
-<div class="export-preview" id="exportPreview"></div>
-<div id="auditBox" class="audit-box" style="display:none"></div>
+<div id="exportPreviewWrap" style="display:none" data-page-node-id="nIk6B3vn5b9vAV3xHIUV78">
+<p style="font-size:.82rem;color:var(--text2);margin-bottom:6px" data-page-node-id="NdOJDKTNbhc3TiyyCtxAY2">导出预览：</p>
+<div class="export-preview" id="exportPreview" data-page-node-id="Ky5fDGjoa9nOnzPV69l2EG"></div>
+<div id="auditBox" class="audit-box" style="display:none" data-page-node-id="LPdmpkpXD1ZeUeA1UBe1WI"></div>
 </div>
-<div class="export-grid">
-<button class="btn btn-primary" id="btnCopy">📋 复制 JSON</button>
-<button class="btn btn-success" id="btnExport">⬇️ 导出 data.json</button>
+<div class="export-grid" data-page-node-id="eFijin2jsXVCIaECsm4wlr">
+<button class="btn btn-primary" id="btnCopy" data-page-node-id="unB7P1uEEc1ywzZcHnslUu">📋 复制 JSON</button>
+<button class="btn btn-success" id="btnExport" data-page-node-id="nyYoeYpwSrKIQqAIHHdWhs">⬇️ 导出 data.json</button>
 </div>
+<div class="export-grid" style="margin-top:8px" data-page-node-id="wVxRTX8RMkbiTamSvG8IpH">
+<button class="btn btn-multirepo" id="btnHealth" data-page-node-id="vUOCB1LKQQQcqmkXTcOPGr">🩺 体检优化（验证 spider/jar 有效性，自动救回失效站点）</button>
+</div>
+<div id="healthBox" class="audit-box" style="display:none;margin-top:10px" data-page-node-id="PBIM1JlBENJnkZuF2JLbtY"></div>
 </div>
 </div>
 
 <!-- Multi-repo Card -->
-<div class="card" id="multiRepoCard" style="display:none">
-<div class="card-title"><span class="ic">🏬</span> 组合多仓 JSON（配置源汇总索引）</div>
-<p style="font-size:.8rem;color:var(--text2);margin-bottom:12px">把「名字 + 配置源链接」直接拼成一份 TVBox 多仓索引，<b>全程不联网、瞬间生成</b>——多仓本身只是一份目录，各仓库由 TVBox 加载时自行去原链接拉取、互不合并。两种写法：① 一行一个 <code>名字，链接</code>（中英文逗号均可），直接指定仓库名；② 只填链接，仓库名自动取域名。名字都能点「编辑名称」批量改后再导出。</p>
-<div class="result-toolbar">
-<button class="btn btn-sm btn-outline" id="btnMultiRepoCopy">📋 复制 JSON</button>
-<button class="btn btn-sm btn-success" id="btnMultiRepoExport">⬇️ 导出 data.json</button>
-<button class="btn btn-sm btn-outline" id="btnMultiRepoEdit" style="margin-left:auto">✏️ 编辑名称</button>
-<span class="info" id="multiRepoInfo"></span>
+<div class="card" id="multiRepoCard" style="display:none" data-page-node-id="CqOnO5JUVx72DdQQLbcESH">
+<div class="card-title" data-page-node-id="ZLQETsKi3ckEyvF0XoT5aT"><span class="ic" data-page-node-id="C2qfFOQR0veoLcoXHmPQ4s">🏬</span> 组合多仓 JSON（配置源汇总索引）</div>
+<p style="font-size:.8rem;color:var(--text2);margin-bottom:12px" data-page-node-id="FF4GzHdnA3DfFswwvAFVck">把「名字 + 配置源链接」直接拼成一份 TVBox 多仓索引，<b data-page-node-id="kggH68FFOZdApuoXHHVKIV">全程不联网、瞬间生成</b>——多仓本身只是一份目录，各仓库由 TVBox 加载时自行去原链接拉取、互不合并。两种写法：① 一行一个 <code data-page-node-id="kBU9j5vCx7IAWsjG9OrOQJ">名字，链接</code>（中英文逗号均可），直接指定仓库名；② 只填链接，仓库名自动取域名。名字都能点「编辑名称」批量改后再导出。</p>
+<div class="result-toolbar" data-page-node-id="4JFExuZH8u4h1jKGko3VCd">
+<button class="btn btn-sm btn-outline" id="btnMultiRepoCopy" data-page-node-id="6FugwmCYUvD613kE9Mwt2D">📋 复制 JSON</button>
+<button class="btn btn-sm btn-success" id="btnMultiRepoExport" data-page-node-id="2BzACpbRiLeGl27JBSArBW">⬇️ 导出 data.json</button>
+<button class="btn btn-sm btn-outline" id="btnMultiRepoEdit" style="margin-left:auto" data-page-node-id="GhH592vMoGHInobvdkAivF">✏️ 编辑名称</button>
+<span class="info" id="multiRepoInfo" data-page-node-id="Ge9SNCAEmyRy56kozk3TGf"></span>
 </div>
-<div class="export-preview" id="multiRepoPreview" style="max-height:300px"></div>
+<div class="export-preview" id="multiRepoPreview" style="max-height:300px" data-page-node-id="rSt5bLRtO1I4BHzVD8BJlS"></div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" data-page-node-id="wYxIoBewkcKwiyFPXUE5uo"></div>
 
 <script>
 (function(){
@@ -260,6 +264,22 @@ input[type="checkbox"]{width:15px;height:15px;accent-color:var(--primary);cursor
 
 // ============ State ============
 let allNodes = { sites: [], lives: [], parses: [], wallpapers: [], rules: [] };
+
+// 内置豆瓣站点（每次导出固定排在 sites 第一位）。
+// 已实测可用：jar 含 NewDouBanGuard 爬虫类（md5 校验通过），ext 为豆瓣接口配置。
+// 导出时做深拷贝注入，永不依赖用户所选源是否包含豆瓣。
+const BUILTIN_DOUBAN_SITE = {
+  key: 'Douban',
+  name: '🐮【王二小放牛娃】🐮',
+  type: 3,
+  api: 'csp_NewDouBanGuard',
+  indexs: 1,
+  searchable: 0,
+  quickSearch: 0,
+  filterable: 0,
+  ext: 'https://cdn.waimaimingtang.com/file/images/bwc/20260414181247-ae51abfbfe.txt',
+  jar: 'https://oss4liview.moji.com/thd_file/2026/09/06/c9b7ce360a5900c3d089681cf0af7b35.jpg;md5;9f55040b32bfe4a5c9a2353cdef51544'
+};
 let globalFields = {};
 let currentBaseUrl = null;     // 当前正在解析的源地址（用于把相对 spider/jar 解析成绝对 URL）
 let spiderStrippedFlag = false; // 导出时是否因相对路径而自动剥离了 spider（供审核提示）
@@ -1636,9 +1656,12 @@ function buildExportJSON(){
   if(resolvedSpider !== undefined) output.spider = resolvedSpider;
   else delete output.spider;
 
-  if(selections.sites.size > 0){
+  // 站点导出：内置豆瓣固定第一。先剔除用户源里自带的豆瓣站（api 含 NewDouBan，避免与内置版重复），
+  // 再深拷贝内置豆瓣置顶；即使用户未勾选任何影视站点，导出也至少包含豆瓣（「每次生成都固定第一」）。
+  {
     const sites = [];
-    selections.sites.forEach(i => { const s = allNodes.sites[i]; const raw = (s && s.raw) ? s.raw : s; if(raw) sites.push(raw); });
+    selections.sites.forEach(i => { const s = allNodes.sites[i]; const raw = (s && s.raw) ? s.raw : s; if(raw && !/NewDouBan/i.test(raw.api || '')) sites.push(raw); });
+    sites.unshift(JSON.parse(JSON.stringify(BUILTIN_DOUBAN_SITE)));
     output.sites = compat ? exportNodes(sites, 'sites') : sites;
   }
   if(selections.lives.size > 0){
@@ -2099,6 +2122,264 @@ $('#btnMultiRepoEdit').addEventListener('click', () => {
     toast('✅ 名称已更新');
   });
 });
+
+// ============ 🩺 Health Check（体检优化）============
+// 流程：下载 jar → PK 头校验 → md5 比对 → 解析 zip/classes.dex 提取爬虫类 →
+//       与站点 csp_Xxx 的类名比对 → 从「可用 jar 池」自动救回失效站点。
+// 判级（浏览器能力有限，宁可疑可不误杀）：
+//   ok      = 下载成功 + PK 头 + md5 匹配（若有）+ 解析出爬虫类
+//   suspect = 返回非 jar 内容（地址有 UA 校验，浏览器拿到 HTML，TVBox 用 okhttp 可能正常）/ 解析不出类 / 下载失败
+//   bad     = md5 不匹配（jar 已被更新或损坏，TVBox 必报 jar load err）
+// 死站仅判给「确认坏」的站点；suspect 一律保留并提示观察。
+
+// —— 纯 JS md5（对 Uint8Array）——
+function md5Bytes(bytes){
+  const S=[7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,
+           4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21];
+  const K=new Uint32Array(64);
+  for(let i=0;i<64;i++) K[i]=(Math.abs(Math.sin(i+1))*4294967296)|0;
+  const len=bytes.length;
+  const padded=new Uint8Array((((len+8)>>6)+1)<<6);
+  padded.set(bytes); padded[len]=0x80;
+  const dv=new DataView(padded.buffer);
+  dv.setUint32(padded.length-8,(len<<3)>>>0,true);
+  let a0=0x67452301,b0=0xefcdab89,c0=0x98badcfe,d0=0x10325476;
+  const M=new Int32Array(16);
+  for(let off=0;off<padded.length;off+=64){
+    for(let i=0;i<16;i++) M[i]=dv.getInt32(off+i*4,true);
+    let A=a0,B=b0,C=c0,D=d0;
+    for(let i=0;i<64;i++){
+      let F,g;
+      if(i<16){ F=(B&C)|(~B&D); g=i; }
+      else if(i<32){ F=(D&B)|(~D&C); g=(5*i+1)%16; }
+      else if(i<48){ F=B^C^D; g=(3*i+5)%16; }
+      else { F=C^(B|~D); g=(7*i)%16; }
+      F=(F+A+K[i]+M[g])|0;
+      A=D; D=C; C=B;
+      B=(B+((F<<S[i])|(F>>>(32-S[i]))))|0;
+    }
+    a0=(a0+A)|0; b0=(b0+B)|0; c0=(c0+C)|0; d0=(d0+D)|0;
+  }
+  const out=new Uint8Array(16), odv=new DataView(out.buffer);
+  odv.setInt32(0,a0,true); odv.setInt32(4,b0,true); odv.setInt32(8,c0,true); odv.setInt32(12,d0,true);
+  return Array.from(out).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+// —— 最小 zip 读取（jar = zip）：中心目录 → 条目 → 按需解压 ——
+function zipEntries(u8){
+  const sig=[0x50,0x4b,0x05,0x06];
+  let i=u8.length-22;
+  const min=Math.max(0,i-65557);
+  for(;i>=min;i--){ if(u8[i]===sig[0]&&u8[i+1]===sig[1]&&u8[i+2]===sig[2]&&u8[i+3]===sig[3]) break; }
+  if(i<min) return null;
+  const dv=new DataView(u8.buffer,u8.byteOffset,u8.byteLength);
+  const cnt=dv.getUint16(i+10,true);
+  let off=dv.getUint32(i+16,true);
+  const entries=[];
+  for(let k=0;k<cnt && off+46<=u8.length;k++){
+    if(dv.getUint32(off,true)!==0x02014b50) break;
+    const method=dv.getUint16(off+10,true);
+    const csize=dv.getUint32(off+20,true);
+    const nlen=dv.getUint16(off+28,true), elen=dv.getUint16(off+30,true), clen=dv.getUint16(off+32,true);
+    const lho=dv.getUint32(off+42,true);
+    entries.push({ name:new TextDecoder().decode(u8.subarray(off+46,off+46+nlen)), method, csize, lho });
+    off+=46+nlen+elen+clen;
+  }
+  return entries;
+}
+async function zipInflate(u8,e){
+  const dv=new DataView(u8.buffer,u8.byteOffset,u8.byteLength);
+  const nlen=dv.getUint16(e.lho+26,true), elen=dv.getUint16(e.lho+28,true);
+  const start=e.lho+30+nlen+elen;
+  const data=u8.subarray(start,start+e.csize);
+  if(e.method===0) return data;
+  if(e.method!==8) throw new Error('zip method '+e.method);
+  const ab=await new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer();
+  return new Uint8Array(ab);
+}
+// —— dex string pool → com.github.catvod.spider.Xxx 类名集合 ——
+function dexClasses(u8){
+  const out=new Set();
+  if(u8.length<0x70 || u8[0]!==0x64 || u8[1]!==0x65 || u8[2]!==0x78) return out;  // 'dex\n'
+  const dv=new DataView(u8.buffer,u8.byteOffset,u8.byteLength);
+  const n=dv.getUint32(0x38,true), off=dv.getUint32(0x3c,true);
+  if(!n || n>500000 || off+n*4>u8.length) return out;
+  const td=new TextDecoder();
+  for(let i=0;i<n;i++){
+    const sdo=dv.getUint32(off+i*4,true);
+    if(sdo>=u8.length) continue;
+    let v=0,s=0,p=sdo,b;
+    do{ b=u8[p++]; v|=(b&0x7f)<<s; s+=7; }while(b&0x80);   // uleb128 长度
+    if(!v || p+v>u8.length) continue;
+    const str=td.decode(u8.subarray(p,p+v));
+    const m=str.match(/^Lcom\/github\/catvod\/spider\/([A-Za-z0-9_$]+);$/);
+    if(m) out.add(m[1]);
+  }
+  return out;
+}
+async function jarClassesFrom(u8){
+  if(!(u8[0]===0x50 && u8[1]===0x4b)) return null;       // 非 zip
+  const entries=zipEntries(u8);
+  if(!entries) return null;
+  const cls=new Set();
+  for(const e of entries){
+    try{
+      if(/\.dex$/i.test(e.name)) dexClasses(await zipInflate(u8,e)).forEach(c=>cls.add(c));
+      else if(/\.class$/i.test(e.name)){
+        const m=e.name.replace(/\.class$/i,'').match(/([A-Za-z0-9_$]+)$/);
+        if(m) cls.add(m[1]);
+      }
+    }catch(err){}
+  }
+  return cls;
+}
+
+// —— 二进制竞跑下载（复用 CDN 直连 + 代理池；浏览器无法自定义 UA，UA 校验的 jar 会拿到 HTML → suspect）——
+async function raceBin(url,timeout){
+  const cand=[];
+  const cdns=toCdnUrl(url);
+  if(cdns) cdns.forEach(u=>cand.push(u));
+  PROXY_FAST.forEach(p=>cand.push(p.build(url)));
+  if(!cand.length) throw new Error('no candidate');
+  return new Promise((resolve,reject)=>{
+    let settled=false, live=0;
+    const done=r=>{ if(!settled){ settled=true; resolve(r); } };
+    const fail=()=>{ live--; if(!settled && live===0) reject(new Error('all routes failed')); };
+    cand.forEach(u=>{
+      const ctl=new AbortController();
+      const tid=setTimeout(()=>ctl.abort(),timeout||15000);
+      live++;
+      fetch(u,{signal:ctl.signal})
+        .then(r=>r.ok?r.arrayBuffer():Promise.reject(new Error('http '+r.status)))
+        .then(ab=>{ if(ab && ab.byteLength>100) done(new Uint8Array(ab)); })
+        .catch(()=>{})
+        .finally(()=>{ clearTimeout(tid); fail(); });
+    });
+  });
+}
+
+const jarCache=new Map();   // jarStr → {state, classes?, note}
+async function validateJar(jarStr){
+  if(jarCache.has(jarStr)) return jarCache.get(jarStr);
+  const [url,want]=jarStr.split(';md5;');
+  let res, buf=null;
+  try{ buf=await raceBin(url); }catch(e){}
+  if(!buf) res={state:'suspect', note:'浏览器网络下无法下载（可能被墙/防盗链），TVBox 内仍可能可用'};
+  else if(!(buf[0]===0x50 && buf[1]===0x4b)) res={state:'suspect', note:'返回非 jar 内容（该地址有 UA 校验，TVBox 用 okhttp 请求通常正常）'};
+  else if(want && md5Bytes(buf)!==want.toLowerCase()) res={state:'bad', note:'md5 不匹配——jar 已被作者更新/损坏，TVBox 必报 jar load err'};
+  else{
+    const cs=await jarClassesFrom(buf);
+    if(cs && cs.size) res={state:'ok', classes:cs, size:buf.length};
+    else res={state:'suspect', note:'jar 内未解析到爬虫类'};
+  }
+  jarCache.set(jarStr,res);
+  return res;
+}
+
+let healthRunning=false;
+async function healthCheck(){
+  if(healthRunning) return;
+  if(!allNodes.sites.length){ toast('❌ 请先解析配置源'); return; }
+  const out=buildExportJSON();
+  const sites=out.sites||[];
+  if(!sites.length){ toast('❌ 请先勾选要导出的影视站点'); return; }
+  healthRunning=true;
+  const btn=$('#btnHealth'), old=btn.textContent;
+  btn.textContent='🩺 体检中…';
+  const box=$('#healthBox');
+  box.style.display='block';
+  box.innerHTML='<div style="font-size:.8rem;color:#64748b">⏳ 正在下载并验证各 jar（大 jar 首次需几秒~几十秒）…</div>';
+  try{
+    // key → 原始节点映射（导出对象可能是副本，修复必须写回 allNodes 的 raw）
+    const rawMap=new Map();
+    allNodes.sites.forEach(n=>{ const r=(n&&n.raw)||n; if(r&&r.key!=null) rawMap.set(r.key,r); });
+
+    const globalSpider=(out.spider||'').trim();
+    const jarSet=new Set();
+    if(globalSpider) jarSet.add(globalSpider);
+    sites.forEach(s=>{ if(s.jar) jarSet.add(s.jar); });
+
+    const results=new Map();
+    let done=0;
+    await runPool([...jarSet],3,async j=>{
+      results.set(j,await validateJar(j));
+      done++;
+      box.innerHTML=`<div style="font-size:.8rem;color:#64748b">⏳ 已验证 ${done} / ${jarSet.size} 个 jar…</div>`;
+    });
+
+    const base=j=>(j||'').split(';md5;')[0];
+    const pool=[];
+    results.forEach((r,j)=>{ if(r.state==='ok'&&r.classes&&r.classes.size) pool.push({jar:j,classes:r.classes}); });
+
+    let fixed=0, suspect=0;
+    const dead=[], lines=[];
+
+    sites.forEach(s=>{
+      const m=(s.api||'').match(/^csp_([A-Za-z0-9_]+)$/);
+      if(!m) return;                                     // js_/其它类型不依赖 jar 类
+      const cls=m[1];
+      const j=s.jar||globalSpider;
+      const r=results.get(j);
+      if(r && r.state==='ok' && r.classes.has(cls)) return;   // 健康
+      const rep=pool.find(p=>p.classes.has(cls)&&base(p.jar)!==base(j));
+      if(rep){
+        const raw=rawMap.get(s.key);
+        if(raw){ raw.jar=rep.jar; fixed++; lines.push(`🔧 <b>${esc(s.name)}</b>：jar 失效/缺类 → 已自动注入含 <code>${cls}</code> 的可用 jar`); }
+      } else if(r && r.state==='suspect'){
+        suspect++;
+        lines.push(`⚠️ ${esc(s.name)}：${r.note}，已保留`);
+      } else {
+        dead.push(`${esc(s.name)}（爬虫类 <code>${cls}</code> 不在任何可用 jar 中）`);
+      }
+    });
+
+    // 全局 spider 体检：失效 → 换覆盖依赖站点最多的池 jar，并勾选「强制使用」让用户可见
+    let spiderLine='';
+    if(globalSpider){
+      const g=results.get(globalSpider);
+      if(g && g.state==='bad' && pool.length){
+        const need=new Map();
+        sites.forEach(s=>{
+          const m=(s.api||'').match(/^csp_([A-Za-z0-9_]+)$/);
+          if(m && !s.jar) need.set(m[1],(need.get(m[1])||0)+1);
+        });
+        let best=null,bestCov=-1;
+        pool.forEach(p=>{
+          let cov=0; need.forEach((cnt,c)=>{ if(p.classes.has(c)) cov+=cnt; });
+          if(cov>bestCov){ bestCov=cov; best=p; }
+        });
+        if(best){
+          $('#spiderOverrideUrl').value=best.jar;
+          $('#chkSpiderOverride').checked=true;
+          spiderLine=`🔧 全局 spider 确认失效 → 已替换为覆盖最广的可用 jar（覆盖 ${bestCov} 个依赖站点），并勾选了「强制使用」`;
+        }
+      } else if(g && g.state==='suspect'){
+        spiderLine=`⚠️ 全局 spider：${g.note}`;
+      } else if(g && g.state==='ok'){
+        spiderLine=`✅ 全局 spider 有效（${(g.size/1024).toFixed(0)}KB，${g.classes.size} 个爬虫类）`;
+      }
+    }
+
+    const plain=sites.filter(s=>/^http:\/\//i.test(s.jar||'')).length;
+    if(plain) lines.push(`ℹ️ ${plain} 个站点使用 http:// 明文 jar，Android 9+ 个别版本可能拒绝加载（多数 TVBox 允许，实测问题不大）`);
+
+    renderExport();
+    box.innerHTML=[
+      `<div style="font-weight:600;margin-bottom:6px">🩺 体检完成：${sites.length} 个站点 · 修复 ${fixed} · 待观察 ${suspect} · 无法挽救 ${dead.length}</div>`,
+      spiderLine?`<div style="margin-bottom:6px">${spiderLine}</div>`:'',
+      ...lines.map(l=>`<div style="margin:2px 0">${l}</div>`),
+      dead.length?`<div style="color:#b91c1c;margin-top:6px"><b>❌ 建议取消勾选的死站：</b><br>${dead.join('<br>')}</div>`
+                 :'<div style="color:#15803d;margin-top:6px">✅ 没有发现无法挽救的站点</div>',
+      '<div style="color:#64748b;margin-top:6px;font-size:.72rem">修复已写回站点列表与导出预览，直接点「导出 data.json」即可。</div>'
+    ].join('');
+    box.scrollIntoView({behavior:'smooth',block:'nearest'});
+    toast(`🩺 体检完成：修复 ${fixed} · 待观察 ${suspect} · 死站 ${dead.length}`);
+  } finally {
+    healthRunning=false;
+    btn.textContent=old;
+  }
+}
+$('#btnHealth').addEventListener('click',healthCheck);
 
 // ============ Init ============
 restoreWorkingSpider();

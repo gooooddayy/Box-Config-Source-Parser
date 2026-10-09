@@ -1,14 +1,6 @@
-# Config-Source-Parser
+# Config-Source-Parser**未完成失败项目**
 
 配置源解析 —— 多源配置的解析、合并与组合。
-
-https://www.workbuddy.link/p/XVRPlHSCJY1nrshyjrmme2?ext2=copy_link
-
-配置数据接口源解析
-
-<img width="1089" height="672" alt="image" src="https://github.com/user-attachments/assets/46532fdb-8596-4046-a50d-069437ac447f" />
-
----
 
 ## 在线使用
 

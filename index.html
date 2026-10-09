@@ -1853,7 +1853,7 @@ function compatAudit(obj){
 
   // 1) 必填字段缺失检查
   sites.forEach((s, i) => {
-    if(!s || !s.key) warnings.push({ lv:'warn', msg:`sites[${i}] 缺少 key（TVBox 用于去重标识，缺失可能导致源重复/不显示）` });
+    if(!s || !s.key) warnings.push({ lv:'warn', msg:`sites[${i}] 缺少 key（用于去重标识，缺失可能导致条目重复/不显示）` });
     else if(typeof s.key !== 'string') warnings.push({ lv:'warn', msg:`sites[${i}].key 不是字符串（实际 ${typeof s.key}）` });
     if(!s || !s.api) warnings.push({ lv:'warn', msg:`sites[${i}] 缺少 api（该站点无法加载）` });
   });
@@ -1873,13 +1873,13 @@ function compatAudit(obj){
   //    parses[].ext 必须是对象（源码: obj.get("ext").getAsJsonObject()）
   parses.forEach((p, i) => {
     if(p && p.ext !== undefined && p.ext !== null && (typeof p.ext !== 'object' || Array.isArray(p.ext))){
-      warnings.push({ lv:'error', msg:`parses[${i}].ext 必须是 JSON 对象，当前为 ${Array.isArray(p.ext) ? '数组' : typeof p.ext}（将触发 TVBox “配置解析失败”，请勿将其转为字符串）` });
+      warnings.push({ lv:'error', msg:`parses[${i}].ext 必须是 JSON 对象，当前为 ${Array.isArray(p.ext) ? '数组' : typeof p.ext}（将触发“配置解析失败”，请勿将其转为字符串）` });
     }
   });
   //    sites[].ext 若为对象/数组可保留（TVBox 用 toString）；若为字符串也 OK，无需处理
   //    livePlayHeaders 顶层若缺失则忽略；若存在必须是数组
   if(obj.livePlayHeaders !== undefined && obj.livePlayHeaders !== null && !Array.isArray(obj.livePlayHeaders)){
-    warnings.push({ lv:'error', msg:`顶层 livePlayHeaders 必须是数组，当前为 ${typeof obj.livePlayHeaders}（TVBox 用 getAsJsonArray 读取，非数组会崩溃）` });
+    warnings.push({ lv:'error', msg:`顶层 livePlayHeaders 必须是数组，当前为 ${typeof obj.livePlayHeaders}（主程序用 getAsJsonArray 读取，非数组会崩溃）` });
   }
   //    sites/lives/parses 每个元素必须是对象
   for(const [cat, arr] of [['sites',sites],['lives',lives],['parses',parses],['rules',rules]]){
@@ -1891,11 +1891,11 @@ function compatAudit(obj){
     const sp = (typeof obj.spider === 'string') ? obj.spider : (obj.spider.spider || '');
     const head = (sp || '').split(';')[0].trim().replace(/^img\+/i, '');
     if(sp && !/^https?:\/\//i.test(head)){
-      warnings.push({ lv:'error', msg:`spider 不是 http/https 绝对 URL「${(sp+'').slice(0,40)}」，TVBox 远程加载会触发“jar load err”` });
+      warnings.push({ lv:'error', msg:`spider 不是 http/https 绝对 URL「${(sp+'').slice(0,40)}」，远程加载会触发“jar load err”` });
     }
   }
   if(spiderCoverageFlag && chosenSpiderMeta){
-    warnings.push({ lv:'info', msg:`本次合并了 ${sourceCount} 个源配置。TVBox 主配置只有 1 个全局 spider 槽位，已自动选用「覆盖面最广」的 spider（来自 ${chosenSpiderMeta.sourcesCount} 个源、覆盖 ${chosenSpiderMeta.dependent} 个依赖 spider 的站点，原因：${chosenSpiderMeta.reason}）；其余站点的解析由各自的「站点级 jar」承担（见下方 jar 清单）` });
+    warnings.push({ lv:'info', msg:`本次合并了 ${sourceCount} 个源配置。主配置只有 1 个全局 spider 槽位，已自动选用「覆盖面最广」的 spider（来自 ${chosenSpiderMeta.sourcesCount} 个源、覆盖 ${chosenSpiderMeta.dependent} 个依赖 spider 的站点，原因：${chosenSpiderMeta.reason}）；其余站点的解析由各自的「站点级 jar」承担（见下方 jar 清单）` });
   } else if(spiderFallbackFlag){
     if(sourceCount > 1){
       warnings.push({ lv:'info', msg:`本次合并了 ${sourceCount} 个源配置，但没有任何源自带可用 spider；导出将不包含全局 spider（各站点的站点级 jar 不受影响）` });
@@ -1907,7 +1907,7 @@ function compatAudit(obj){
     warnings.push({ lv:'info', msg:'已自动剥离「相对路径 spider」（消除 jar load err）；其依赖的 csp_/js_/py_ 等站点仍保留但可能失去解析能力，建议另行提供可访问的 spider 绝对 URL' });
   }
   if(perSiteJarCount > 0){
-    warnings.push({ lv:'info', msg:`已为 ${perSiteJarCount} 个「依赖 spider 类、但自身没有 jar」的站点自动补上「所属源自带的 spider」作为站点级 jar。TVBox 会为这些站点单独加载各自作者的 jar，从而绕开「主配置只有 1 个全局 spider 槽位」的限制——这是多源合并后大量站点搜索无结果的核心修复` });
+    warnings.push({ lv:'info', msg:`已为 ${perSiteJarCount} 个「依赖 spider 类、但自身没有 jar」的站点自动补上「所属源自带的 spider」作为站点级 jar。主程序会为这些站点单独加载各自的 jar，从而绕开「主配置只有 1 个全局 spider 槽位」的限制——这是多源合并后大量站点搜索无结果的核心修复` });
   }
   // 新增：站点级相对路径 api / ext / jar 自动解析提示
   let relCount = 0;
@@ -1920,7 +1920,7 @@ function compatAudit(obj){
     });
   }
   if(relCount > 0){
-    warnings.push({ lv:'warn', msg:`检测到 ${relCount} 个站点字段仍是「./相对路径」（来源未知导致解析器无法解析为绝对 URL），TVBox 加载时会 404；请从 URL 方式重新解析该源` });
+    warnings.push({ lv:'warn', msg:`检测到 ${relCount} 个站点字段仍是「./相对路径」（来源未知导致解析器无法解析为绝对 URL），主程序加载时会 404；请从 URL 方式重新解析该源` });
   }
   // jar 依赖清单：多源合并后最该核对的一条 —— 一共几个 jar、各承载多少站点、全局是哪个。
   // 站点级 jar 用 TVBox 官方字段 sites[].jar，由 App 按站点单独加载，不占全局 spider 槽位。
@@ -1928,7 +1928,7 @@ function compatAudit(obj){
     const jd = summarizeJarDeps(obj);
     if(jd.list.length > 1){
       const parts = jd.list.map(x => `${x.host}（${x.global ? '全局，' : ''}${x.count} 站）`);
-      warnings.push({ lv:'info', msg:`本次导出共依赖 ${jd.list.length} 个 jar：${parts.join('、')}。非全局的以「站点级 jar」挂在对应站点上，TVBox 会为它们分别加载，不受「全局只有 1 个 spider 槽位」限制` });
+      warnings.push({ lv:'info', msg:`本次导出共依赖 ${jd.list.length} 个 jar：${parts.join('、')}。非全局的以「站点级 jar」挂在对应站点上，主程序会为它们分别加载，不受「全局只有 1 个 spider 槽位」限制` });
     }
     if(jd.noJar > 0){
       warnings.push({ lv:'warn', msg:`有 ${jd.noJar} 个站点既没有站点级 jar、其来源也没有自带 spider，只能靠全局 spider 解析；若全局 jar 内不含这些站点的类，它们将取不到内容` });
@@ -1979,7 +1979,7 @@ function renderExport(){
 
 function renderAudit(res){
   const badge = res.passed
-    ? '<span style="color:#16a34a;font-weight:600">✓ 通过 TVBox 兼容审核</span>'
+    ? '<span style="color:#16a34a;font-weight:600">✓ 通过兼容审核</span>'
     : '<span style="color:#dc2626;font-weight:600">⚠ 存在兼容风险</span>';
   let html = `<div style="margin:10px 0 4px;font-size:.85rem">${badge}（共 ${res.warnings.length} 条提示）</div>`;
   if(res.warnings.length){

@@ -14,7 +14,7 @@
 - 关键实现：URL 正则提取、嵌套 URL 递归解析、CORS 兜底、去重、XSS 转义。
 - 预修：fetch 超时+重试、非 JSON 文本兜底、BOM 清理、大数据 max-height 截断。
 - **8-24 重大修复**：导出时丢弃了 TVBox 顶层全局字段（spider/logo/wallpaper/danmaku/ijk/flags…），
-  没了 spider 搜索播放全失效 → 新增 `extractGlobalFields()` 提取 `GLOBAL_KEYS` 顶层字段。
+  没了 spider 搜索加载全失效 → 新增 `extractGlobalFields()` 提取 `GLOBAL_KEYS` 顶层字段。
 
 ### 08-24 输入区改造 + 解析成功率升级
 - 移除「示例」按钮；输入改为**显式 mode 驱动**：

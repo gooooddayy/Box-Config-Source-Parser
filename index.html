@@ -239,7 +239,7 @@ input[type="checkbox"]{width:15px;height:15px;accent-color:var(--primary);cursor
 <details class="adv" style="margin-top:12px" data-page-node-id="wVxRTX8RMkbiTamSvG8IpH">
 <summary>⚙️ 高级选项（可选）</summary>
 <div class="adv-body">
-<label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="chkGlobal" checked data-page-node-id="aANpXlARvSNQBPkW0ub2IJ"> 包含全局配置（spider / logo / 壁纸等，搜索播放需要）</label>
+<label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="chkGlobal" checked data-page-node-id="aANpXlARvSNQBPkW0ub2IJ"> 包含全局配置（spider / logo / 壁纸等）</label>
 <label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="chkAudit" checked data-page-node-id="0qDNpvbmFAmpWKkCWNTLXh"> 导出前自动检查（给出通关提示）</label>
 <label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="chkStrict" data-page-node-id="Sx7APbDLthQ1iccoWC6WnZ"> 严格模式：剔除缺少必填字段的节点</label>
 <label style="display:flex;align-items:center;gap:6px" data-page-node-id="yf4bidGfEI1ccDA9yKa6iR"><input type="checkbox" id="chkSpiderOverride" data-page-node-id="g5S2FXBXNq0SD1lV7Q7QMK"> 强制指定 spider（默认自动：单源跟随源、多源选覆盖面最广）</label>
@@ -1643,7 +1643,7 @@ function exportNodes(nodes, kind){
       // parses.ext 字符串 → 还原为对象（修复致命错误）
       if(kind === 'parses' && 'ext' in o){ const e = coerceExt(o.ext); if(e === undefined) delete o.ext; else o.ext = e; }
       // sites.ext 若为 JSON 字符串（被转义的对象/数组），尝试还原为真实对象；
-      // 若只是普通 URL 字符串（如天天、热播的 ext）则保持原样，TVBox 接受字符串 ext。
+      // 若只是普通 URL 字符串则保持原样，TVBox 接受字符串 ext。
       if(kind === 'sites' && 'ext' in o && typeof o.ext === 'string'){
         const t = o.ext.trim();
         if(t.startsWith('{') || t.startsWith('[') || t.startsWith('"{') || t.startsWith('"[')){
@@ -2087,7 +2087,7 @@ $('#btnClear').addEventListener('click', () => {
 });
 
 // ============ Multi-repo (多仓) ============
-// 把每个输入链接作为一个仓库，汇总成 TVBox 多仓配置（顶层数组 [{name,url}]，TVBox / 影视仓 全版本通用）。
+// 把每个输入链接作为一个仓库，汇总成多仓配置（顶层数组 [{name,url}]，全版本通用）。
 // 与「解析」不同：多仓不合并站点，而是让 TVBox 逐个远程加载每个源，互不影响、互不替换。
 function hostOfUrl(url){
   try { return new URL(url).hostname; } catch(e){ return url.replace(/^https?:\/\//,'').split('/')[0]; }

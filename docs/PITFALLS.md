@@ -183,6 +183,22 @@ WorkBuddy 的删除 = 移动到会话的 `modify_backup` 副本目录，**不释
 要真释放需两步：① 删目标文件；② 扫副本目录 `find "<modify_backup>" -maxdepth 1 -type f -name '*<原名片段>*' -delete`。
 副本命名有 `序号.d.<hash>.<原名>` / `.a.` / `.m.` 多种前缀 ⇒ **按原名片段匹配最稳**。
 
+### C9 ★ 换行符假 diff（写回文件 / 推送时）
+Python `read_text()` 默认 universal newlines（CRLF→LF），`write_text()` 在 Windows 又默认把 LF 写成 CRLF
+—— 两头一凑，**没改几个字也会产生"整个文件都变了"的假 diff**（实测 2285 行全变、实际只改 9 行）。
+⇒ 写回必须显式 `newline=''` 或直接操作 bytes；推送后用 compare 接口核对 diff 行数，确认只有预期改动。
+
+### C10 删除类操作的两个拦截（回收站 / 脚本安全）
+- PowerShell 的 `Add-Type` 与 COM 对象实例化会被安全策略直接拦（"Command blocked for security"）→
+  移入回收站改用 Python `send2trash`（`pip install Send2Trash`）。
+- `send2trash` 可能报 `FileNotFoundError: [WinError 2]` 但**实际已删除成功**（误报）⇒
+  报错后必须 `ls` 复核再决定是否重试，别盲目重复执行。
+
+### C11 jsdom 测"界面文案"要先剥离 script
+`document.body.textContent` 会把 `<script>` 里的代码文本一并算入 →
+判断"界面是否含某词"会误报（比如代码注释里的品牌词）。
+⇒ 正确做法：clone body → `remove('script,style')` → 再取 textContent 匹配。
+
 ---
 
 ## D. 诊断方法论（遇到"站不能用"时按这个走）
@@ -229,3 +245,8 @@ cors.lol 常驻 429；allorigins/codetabs 常年超时；whateverorigin 返回 H
 多次出现"测试失败但代码是对的" —— 例如把壁纸行也算进站点计数、
 把"x 站与全局 spider 同源不该挂站点级 jar"写成失败。
 **先读一遍自己的预期值再改代码。**
+
+### D9 下载通道优先级（拉文件 / 拉 jar 通用）
+实测稳定性：**GitHub API（api.github.com）≈ Pages 域名（*.github.io） > raw.githubusercontent.com（时通时断）**。
+另：jsDelivr 对 `.jar` 返 403（见 D3）；`git clone` 在受限网络常握手失败 —— 几个文本文件直接走 REST API 即可。
+某条通道 000/超时**先别下结论，换通道复测**（2026-10-15 复测：同一文件三次请求 200/000/200）。

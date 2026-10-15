@@ -29,6 +29,7 @@
 
 | 文档 | 什么时候看 |
 |---|---|
+| [docs/SETUP.md](docs/SETUP.md) | 🖥️ **换电脑 / 新会话先看** —— 拉取通道、环境搭建、推送流程、协作规则、合规红线 |
 | [docs/PITFALLS.md](docs/PITFALLS.md) | ⭐ **改代码前必读** —— 全部踩过的坑，按主题分类（配置格式机制 / 自身 bug / 工具链 / 诊断方法论） |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | 要动代码时看 —— 文件结构、模块地图、核心函数、关键常量、修改指南 |
 | [docs/DEVLOG.md](docs/DEVLOG.md) | 想知道"为什么现在是这样"时看 —— 完整演进史与关键决策记录 |
